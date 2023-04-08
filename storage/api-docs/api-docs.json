@@ -1,0 +1,210 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Authenticator App Api",
+        "description": "The app api for authentication and authorization",
+        "contact": {
+            "email": "authapp@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://autentication.test/images/logo.png"
+        }
+    },
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login any user of any type",
+                "description": "Login the user",
+                "operationId": "f779238bce5c5b984c773808f46fd14c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "schema": "Request",
+                                "title": "Login Title",
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Logout the user",
+                "operationId": "19eed55d1fc9a82cded00186252e5edd",
+                "responses": {
+                    "200": {
+                        "description": "Logged out successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/signup": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register any user of any type",
+                "description": "Register new user",
+                "operationId": "653bac2bffecee7b8851b6e006239c4f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "schema": "Request",
+                                "title": "Register Title",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "confrim_password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "string",
+                                    "email": "string",
+                                    "password": "string",
+                                    "password_confirmation": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/app/getUsers": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Get all users on the database",
+                "operationId": "e5006a57c242ce5738e4e8a4e667a5ed",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users fetched successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/app/updatePicture": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Update user picture",
+                "operationId": "5dbb1e949d68364aa2a257d983936ee9",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "schema": "Request",
+                                "title": "Upload Picture",
+                                "required": [
+                                    "Picture"
+                                ],
+                                "properties": {
+                                    "Picture": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
+                "in": "header",
+                "name": "Authorization",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://authentication.test/oauth/authorize",
+                        "tokenUrl": "http://authentication.test/oauth/token",
+                        "refreshUrl": "http://authentication.test/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    }
+}
