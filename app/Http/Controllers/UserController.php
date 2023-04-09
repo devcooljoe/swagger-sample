@@ -32,18 +32,18 @@ class UserController extends Controller
      *     security={{ "Bearer": {}}}
      * )
      */
-    public function get_user(Request $request)
+    public function getUser(Request $request)
     {
         return response()->json([
             'status' => 'success',
             'message' => 'Users fetched successfully',
-            'data' => UserResource::collection(User::paginate($request->PageSize ?? 10)),
+            'data' => UserResource::collection(User::orderBy('id', 'DESC')->paginate($request->PageSize ?? 10)),
         ], 200);
     }
 
 
     /**
-     * @OA\Put(
+     * @OA\Post(
      *     path="/api/app/updatePicture",
      *     tags={"Users"},
      *     description="Update user picture",
@@ -67,18 +67,19 @@ class UserController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Successful operation",
+     *         @OA\JsonContent(),
      *     ),
      * )
      */
     public function uploadPicture(Request $request): JsonResponse
     {
 
-       $response = (new UploadHelper())->uploadFile($request->file('Picture'));
-
+        $url = UploadHelper::uploadFile($request->file('Picture'));
+        auth()->user()->update(['picture' => $url]);
         return response()->json([
             'status' => 'success',
             'message' => 'File uploaded successfully',
-            'data' => $response,
+            'data' => new UserResource(auth()->user()),
         ], 200);
     }
 }

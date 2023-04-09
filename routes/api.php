@@ -22,6 +22,6 @@ Route::post('/auth/login',[LoginController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/auth/logout',[LogoutController::class, 'logout']);
-    Route::get('/app/getUsers',[UserController::class, 'get_user']);
-    Route::put('/app/updatePicture', [UserController::class, 'uploadPicture']);
+    Route::get('/app/getUsers',[UserController::class, 'getUser']);
+    Route::post('/app/updatePicture', [UserController::class, 'uploadPicture']);
 });

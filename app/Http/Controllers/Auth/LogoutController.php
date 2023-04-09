@@ -12,9 +12,11 @@ class LogoutController extends Controller
      *     path="/api/auth/logout",
      *     tags={"Auth"},
      *     description="Logout the user",
+     *
      *     @OA\Response(
      *         response="200",
      *         description="Logged out successfully",
+     *        @OA\JsonContent(),
      *     ),
      *     security={{ "Bearer": {}}}
      * )

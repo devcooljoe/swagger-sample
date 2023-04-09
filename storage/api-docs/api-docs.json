@@ -30,10 +30,6 @@
                             "schema": {
                                 "schema": "Request",
                                 "title": "Login Title",
-                                "required": [
-                                    "email",
-                                    "password"
-                                ],
                                 "properties": {
                                     "email": {
                                         "type": "string"
@@ -49,7 +45,12 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 }
             }
@@ -63,7 +64,12 @@
                 "operationId": "19eed55d1fc9a82cded00186252e5edd",
                 "responses": {
                     "200": {
-                        "description": "Logged out successfully"
+                        "description": "Logged out successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -97,24 +103,23 @@
                                     "password": {
                                         "type": "string"
                                     },
-                                    "confrim_password": {
+                                    "password_confirmation": {
                                         "type": "string"
                                     }
                                 },
-                                "type": "object",
-                                "example": {
-                                    "name": "string",
-                                    "email": "string",
-                                    "password": "string",
-                                    "password_confirmation": "string"
-                                }
+                                "type": "object"
                             }
                         }
                     }
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 }
             }
@@ -149,12 +154,12 @@
             }
         },
         "/api/app/updatePicture": {
-            "put": {
+            "post": {
                 "tags": [
                     "Users"
                 ],
                 "description": "Update user picture",
-                "operationId": "5dbb1e949d68364aa2a257d983936ee9",
+                "operationId": "9077fd2e05e6d34751c6ada10e3eee97",
                 "requestBody": {
                     "content": {
                         "multipart/form-data": {
@@ -177,7 +182,12 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 },
                 "security": [

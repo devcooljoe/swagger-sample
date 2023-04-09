@@ -37,7 +37,7 @@ class SignupController extends Controller
      *                     type="string"
      *                 ),
      *                @OA\Property(
-     *                     property="confrim_password",
+     *                     property="password_confirmation",
      *                     type="string"
      *                 ),
      *             )
@@ -46,6 +46,7 @@ class SignupController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Successful operation",
+     *        @OA\JsonContent(),
      *     ),
      * )
      */
