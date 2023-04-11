@@ -22,6 +22,7 @@ Route::post('/auth/login',[LoginController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/auth/logout',[LogoutController::class, 'logout']);
+    Route::post('/auth/sendEmailVerificationCode', [SignupController::class, 'sendEmail']);
     Route::get('/app/getUsers',[UserController::class, 'getUser']);
     Route::post('/app/updatePicture', [UserController::class, 'uploadPicture']);
 });

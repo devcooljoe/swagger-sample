@@ -2,11 +2,11 @@
 
 namespace App\Http\Helpers;
 
-use Cloudinary\Api\ApiResponse;
 use Cloudinary\Cloudinary;
 use Illuminate\Support\Str;
 
-class UploadHelper {
+class UploadHelper
+{
 
     public static function uploadFile($file)
     {
@@ -19,8 +19,8 @@ class UploadHelper {
                 ],
             ]
         );
-      $file_path = $file->getRealPath();
-      $response =  $cloudinary->uploadApi()->upload($file_path, ['public_id' => 'authentication/'.Str::random(50)]);
-      return $response['secure_url'];
+        $file_path = $file->getRealPath();
+        $response =  $cloudinary->uploadApi()->upload($file_path, ['public_id' => 'authentication/' . Str::random(50)]);
+        return $response['secure_url'];
     }
 }

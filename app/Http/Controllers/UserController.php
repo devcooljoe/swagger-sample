@@ -28,6 +28,7 @@ class UserController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Users fetched successfully",
+     *         @OA\JsonContent(),
      *     ),
      *     security={{ "Bearer": {}}}
      * )

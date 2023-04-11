@@ -124,13 +124,54 @@
                 }
             }
         },
+        "/api/auth/sendEmailVerificationCode": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Send an email verification code to the user",
+                "description": "Send an email verification code to the user",
+                "operationId": "61869edee09224aeb61f0ab93751f00a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "schema": "Request",
+                                "title": "Email Verification Title",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
         "/api/app/getUsers": {
             "get": {
                 "tags": [
                     "Users"
                 ],
                 "description": "Get all users on the database",
-                "operationId": "e5006a57c242ce5738e4e8a4e667a5ed",
+                "operationId": "16492c0a10969c7afcf59b43f0084315",
                 "parameters": [
                     {
                         "name": "page",
@@ -143,7 +184,12 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Users fetched successfully"
+                        "description": "Users fetched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 },
                 "security": [
